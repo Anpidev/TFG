@@ -36,7 +36,7 @@ public class AnaliticaService {
 	}
 
 	public List<Analitica> findAllAnaliticas() {
-		return analiticaRepository.findAll();
+		return analiticaRepository.findAllWithRelations();
 	}
 
 	public Optional<Analitica> findByIdAnalitica(Integer id) {
