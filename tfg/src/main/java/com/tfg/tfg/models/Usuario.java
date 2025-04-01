@@ -2,6 +2,8 @@ package com.tfg.tfg.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,25 +17,20 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name = "dni", unique = true, nullable = false)
 	private String dni;
 
-	@Column(name = "nombre", nullable = false)
 	private String nombre;
 
-	@Column(name = "apellido", nullable = false) // Añadido campo faltante
 	private String apellido;
 
-	@Column(name = "tipo", nullable = false)
-	private String tipo;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "tipo")
+	private Tipo tipo;
 
-	@Column(name = "email", unique = true, nullable = false)
 	private String email;
 
-	@Column(name = "usuario", unique = true, nullable = false)
 	private String usuario;
 
-	@Column(name = "password", nullable = false)
 	private String password;
 
 	// Constructores, getters y setters...
@@ -55,7 +52,7 @@ public class Usuario {
 		this.email = email;
 	}
 
-	public Usuario(String dni, String nombre, String apellido, String tipo, String email, String usuario,
+	public Usuario(String dni, String nombre, String apellido, Tipo tipo, String email, String usuario,
 			String password) {
 		super();
 		this.dni = dni;
@@ -104,8 +101,13 @@ public class Usuario {
 		this.apellido = apellido;
 	}
 
-	public String getTipo() {
+	public Tipo getTipo() {
 		return tipo;
+	}
+	
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
 	}
 
 	public String getEmail() {
@@ -131,5 +133,7 @@ public class Usuario {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	
 
 }

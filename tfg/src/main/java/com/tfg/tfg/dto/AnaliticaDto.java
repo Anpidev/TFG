@@ -1,26 +1,51 @@
 package com.tfg.tfg.dto;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
+
+import com.tfg.tfg.models.Analitica.EstadoAnalitica;
+import com.tfg.tfg.models.Parametros;
 
 public class AnaliticaDto {
     private int id;
-    private String pacienteNombre;  
-    private String medicoNombre;    
-    private LocalDateTime fechaCreacion;
-    private String estado;
+    private int pacienteId;
+    private String pacienteNombre;
+    private String pacienteApellido;
+    private String pacienteDni;
+    private int medicoId;
+    private String medicoNombre;
+    private String medicoApellido;
+    private LocalDate fechaCreacion;
+    private EstadoAnalitica estado;
     private String observaciones;
-    private List<String> parametros; 
+    private List<Parametros> parametros;
 
-    public enum EstadoAnalitica {
-        CREADA, EXTRAIDA, COMPLETADA, CANCELADA
-    }
+   
 
-    // Constructores
+    // Constructor vacío
     public AnaliticaDto() {
-        this.fechaCreacion = LocalDateTime.now();
-        this.estado = EstadoAnalitica.CREADA.name().toLowerCase();
     }
+    
+ 
+
+	//Contructor con todos los campos
+    public AnaliticaDto(int id, int pacienteId, String pacienteNombre, String pacienteApellido, String pacienteDni,
+			int medicoId, String medicoNombre, String medicoApellido, LocalDate fechaCreacion, EstadoAnalitica estado,
+			String observaciones, List<Parametros> parametros) {
+		super();
+		this.id = id;
+		this.pacienteId = pacienteId;
+		this.pacienteNombre = pacienteNombre;
+		this.pacienteApellido = pacienteApellido;
+		this.pacienteDni = pacienteDni;
+		this.medicoId = medicoId;
+		this.medicoNombre = medicoNombre;
+		this.medicoApellido = medicoApellido;
+		this.fechaCreacion = fechaCreacion;
+		this.estado = estado;
+		this.observaciones = observaciones;
+		this.parametros = parametros;
+	}
 
     // Getters y Setters
     public int getId() {
@@ -39,6 +64,22 @@ public class AnaliticaDto {
         this.pacienteNombre = pacienteNombre;
     }
 
+    public String getPacienteApellido() {
+        return pacienteApellido;
+    }
+
+    public void setPacienteApellido(String pacienteApellido) {
+        this.pacienteApellido = pacienteApellido;
+    }
+
+    public String getPacienteDni() {
+        return pacienteDni;
+    }
+
+    public void setPacienteDni(String pacienteDni) {
+        this.pacienteDni = pacienteDni;
+    }
+
     public String getMedicoNombre() {
         return medicoNombre;
     }
@@ -47,24 +88,37 @@ public class AnaliticaDto {
         this.medicoNombre = medicoNombre;
     }
 
-    
-    public LocalDateTime getFechaCreacion() {
+    public String getMedicoApellido() {
+        return medicoApellido;
+    }
+
+    public void setMedicoApellido(String medicoApellido) {
+        this.medicoApellido = medicoApellido;
+    }
+
+    public LocalDate getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(LocalDateTime fechaCreacion) {
+    public void setFechaCreacion(LocalDate fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public String getEstado() {
+    public EstadoAnalitica getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+    
+   
 
-    public String getObservaciones() {
+
+	public void setEstado(EstadoAnalitica estado) {
+		this.estado = estado;
+	}
+
+
+
+	public String getObservaciones() {
         return observaciones;
     }
 
@@ -72,11 +126,28 @@ public class AnaliticaDto {
         this.observaciones = observaciones;
     }
 
-    public List<String> getParametros() {
+    public List<Parametros> getParametros() {
         return parametros;
     }
 
-    public void setParametros(List<String> parametros) {
+    public void setParametros(List<Parametros> parametros) {
         this.parametros = parametros;
     }
+
+	public int getPacienteId() {
+		return pacienteId;
+	}
+
+	public void setPacienteId(int pacienteId) {
+		this.pacienteId = pacienteId;
+	}
+
+	public int getMedicoId() {
+		return medicoId;
+	}
+
+	public void setMedicoId(int medicoId) {
+		this.medicoId = medicoId;
+	}
+    
 }

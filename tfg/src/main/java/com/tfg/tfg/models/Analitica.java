@@ -1,161 +1,141 @@
 package com.tfg.tfg.models;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "analiticas")
 public class Analitica {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "paciente_id", nullable = false)
-    @JsonIgnore
-    private Usuario paciente;
+	@ManyToOne
+	@JoinColumn(name = "paciente_id", nullable = false)
+	@JsonIgnore
+	private Usuario paciente;
 
-    @ManyToOne
-    @JoinColumn(name = "medico_id", nullable = false)
-    @JsonIgnore
-    private Usuario medico;
+	@ManyToOne
+	@JoinColumn(name = "medico_id", nullable = false)
+	@JsonIgnore
+	private Usuario medico;
 
-    @Column(name = "fecha_creacion", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime fechaCreacion;
+	@Column(name = "fecha_creacion", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	private LocalDate fechaCreacion;
 
-    @Column(name = "estado", columnDefinition = "VARCHAR(10) DEFAULT 'creada'")
-    private String estado;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "estado", columnDefinition = "VARCHAR(10) DEFAULT 'CREADA'")
+	private EstadoAnalitica estado;
 
-    @Column(name = "observaciones", length = 1000)
-    private String observaciones;
+	@Column(name = "observaciones", length = 1000)
+	private String observaciones;
 
-    @OneToMany(mappedBy = "analitica", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Parametro> parametros;
+	@ElementCollection
+	@CollectionTable(name = "analiticas_parametros", joinColumns = @JoinColumn(name = "analitica_id"))
+	@Column(name = "parametro")
+	@Enumerated(EnumType.STRING)
+	private List<Parametros> parametros;
 
-    public enum EstadoAnalitica {
-        CREADA, EXTRAIDA, COMPLETADA, CANCELADA
-    }
+	public enum EstadoAnalitica {
+		CREADA, EXTRAIDA, COMPLETADA, CANCELADA
+	}
 
-    // Constructores
-    public Analitica() {
-        this.fechaCreacion = LocalDateTime.now();
-        this.estado = EstadoAnalitica.CREADA.name().toLowerCase();
-    }
+	// Constructores
+	public Analitica() {
+		this.fechaCreacion = LocalDate.now();
+		this.estado = EstadoAnalitica.CREADA;
+	}
 
-    public Analitica(int id) {
-        this();
-        this.id = id;
-        this.fechaCreacion = LocalDateTime.now();
-        this.estado = EstadoAnalitica.CREADA.name().toLowerCase();
-    }
+	public Analitica(int id) {
+		this();
+		this.id = id;
+	}
 
-    public Analitica(Usuario paciente, Usuario medico, String observaciones) {
-        this();
-        this.paciente = paciente;
-        this.medico = medico;
-        this.observaciones = observaciones;
-        this.fechaCreacion = LocalDateTime.now();
-        this.estado = EstadoAnalitica.CREADA.name().toLowerCase();
-    }
+	public Analitica(int id, Usuario paciente, Usuario medico, LocalDate fechaCreacion, EstadoAnalitica estado,
+			String observaciones, List<Parametros> parametros) {
+		super();
+		this.id = id;
+		this.paciente = paciente;
+		this.medico = medico;
+		this.fechaCreacion = fechaCreacion;
+		this.estado = estado;
+		this.observaciones = observaciones;
+		this.parametros = parametros;
+	}
 
-    // Métodos para manejo de parámetros
-    public void addParametro(Parametro parametro) {
-        parametros.add(parametro);
-        parametro.setAnalitica(this);
-    }
+	// Getters y Setters
+	public int getId() {
+		return id;
+	}
 
-    public void removeParametro(Parametro parametro) {
-        parametros.remove(parametro);
-        parametro.setAnalitica(null);
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-   
+	public Usuario getPaciente() {
+		return paciente;
+	}
 
-    // Getters y Setters
-    public int getId() {
-        return id;
-    }
+	public void setPaciente(Usuario paciente) {
+		this.paciente = paciente;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public Usuario getMedico() {
+		return medico;
+	}
 
-    public Usuario getPaciente() {
-        return paciente;
-    }
+	public void setMedico(Usuario medico) {
+		this.medico = medico;
+	}
 
-    public void setPaciente(Usuario paciente) {
-        this.paciente = paciente;
-    }
+	public LocalDate getFechaCreacion() {
+		return fechaCreacion;
+	}
 
-    public Usuario getMedico() {
-        return medico;
-    }
+	public void setFechaCreacion(LocalDate fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
 
-    public void setMedico(Usuario medico) {
-        this.medico = medico;
-    }
+	
 
-    public LocalDateTime getFechaCreacion() {
-        return fechaCreacion;
-    }
+	public EstadoAnalitica getEstado() {
+		return estado;
+	}
 
-    public void setFechaCreacion(LocalDateTime fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
+	public void setEstado(EstadoAnalitica estado) {
+		this.estado = estado;
+	}
 
-    public String getEstado() {
-        return estado;
-    }
-    
-    public void setEstado(String estado) {
-       
-        String upperEstado = estado.toUpperCase();
-        
-        try {
-           
-            EstadoAnalitica.valueOf(upperEstado);
-           
-            this.estado = estado.toLowerCase();
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("Estado no válido.");
-               
-        }
-    }
+	public String getObservaciones() {
+		return observaciones;
+	}
 
-    
-    public void setEstado(EstadoAnalitica estado) {
-        this.estado = estado.name().toLowerCase();
-    }
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
+	}
 
+	public List<Parametros> getParametros() {
+		return parametros;
+	}
 
-    public String getObservaciones() {
-        return observaciones;
-    }
+	public void setParametros(List<Parametros> parametros) {
+		this.parametros = parametros;
+	}
 
-    public void setObservaciones(String observaciones) {
-        this.observaciones = observaciones;
-    }
-
-    public List<Parametro> getParametros() {
-        return parametros;
-    }
-
-    public void setParametros(List<Parametro> parametros) {
-        this.parametros = parametros;
-    }
 }
