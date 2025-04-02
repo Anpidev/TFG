@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tfg.tfg.dto.AnaliticaDto;
+import com.tfg.tfg.dto.UsuarioDto;
 import com.tfg.tfg.mappers.AnaliticaMapper;
 import com.tfg.tfg.models.Analitica;
-import com.tfg.tfg.models.Usuario;
 import com.tfg.tfg.services.AnaliticaService;
 
 @RestController
@@ -72,7 +72,7 @@ public class AnaliticaRestController {
 //REST USUARIOS
 		
 	@CrossOrigin	@GetMapping("/usuarios")
-	public List<Usuario> buscarTodosLosUsuarios() {
+	public List<UsuarioDto> buscarTodosLosUsuarios() {
 		return analiticaService.findAllUsuarios();
 	}
 }

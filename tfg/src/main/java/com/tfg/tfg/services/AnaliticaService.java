@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.tfg.tfg.dto.UsuarioDto;
 import com.tfg.tfg.models.Analitica;
 import com.tfg.tfg.models.Usuario;
 import com.tfg.tfg.repositories.AnaliticaRepository;
@@ -53,8 +54,10 @@ public class AnaliticaService {
 	}
 
 
-	public List<Usuario> findAllUsuarios() {
-		return usuarioRepository.findAll();
+	public List<UsuarioDto> findAllUsuarios() {
+		return usuarioRepository.findAll().stream().map(usuario-> new UsuarioDto(usuario.getId(),usuario.getDni(),
+				usuario.getNombre(),usuario.getApellido(),usuario.getTipo(),usuario.getEmail(),usuario.getUsuario(),
+				usuario.getPassword())).toList();
 	}
 
 
