@@ -3,6 +3,7 @@ package com.tfg.tfg.restcontrollers;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tfg.tfg.dto.AnaliticaDto;
 import com.tfg.tfg.mappers.AnaliticaMapper;
 import com.tfg.tfg.models.Analitica;
+import com.tfg.tfg.models.Usuario;
 import com.tfg.tfg.services.AnaliticaService;
 
 @RestController
@@ -26,9 +28,11 @@ public class AnaliticaRestController {
 	public AnaliticaRestController(AnaliticaService analiticaService) {
 		super();
 		this.analiticaService = analiticaService;
+		
+		
+		//REST ANALITICA
 	}
-
-	@GetMapping
+	@CrossOrigin	@GetMapping
 	public List<AnaliticaDto> buscarTodasLasAnaliticas() {
 		return analiticaService.findAllAnaliticas().stream().map(AnaliticaMapper::toDto).toList();
 	}
@@ -63,8 +67,12 @@ public class AnaliticaRestController {
 		
 		}
 		return AnaliticaMapper.toDto(analiticaSalvada);
-		
+	}
 	
-
+//REST USUARIOS
+		
+	@CrossOrigin	@GetMapping("/usuarios")
+	public List<Usuario> buscarTodosLosUsuarios() {
+		return analiticaService.findAllUsuarios();
 	}
 }
