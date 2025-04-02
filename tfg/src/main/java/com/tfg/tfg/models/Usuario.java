@@ -44,12 +44,17 @@ public class Usuario {
 		this.id = id;
 	}
 
-	public Usuario(String dni, String nombre, String apellido, String email) {
+	public Usuario(String dni,String nombre, String apellido) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.email = email;
+	}
+
+	public Usuario( String nombre, String apellido) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
 	}
 
 	public Usuario(String dni, String nombre, String apellido, Tipo tipo, String email, String usuario,
@@ -104,7 +109,6 @@ public class Usuario {
 	public Tipo getTipo() {
 		return tipo;
 	}
-	
 
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
@@ -133,7 +137,5 @@ public class Usuario {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	
 
 }
