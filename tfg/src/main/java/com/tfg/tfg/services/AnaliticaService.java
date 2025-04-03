@@ -56,7 +56,7 @@ public class AnaliticaService {
 
 	public List<UsuarioDto> findAllUsuarios() {
 		return usuarioRepository.findAll().stream().map(usuario-> new UsuarioDto(usuario.getId(),usuario.getDni(),
-				usuario.getNombre(),usuario.getApellido(),usuario.getTipo(),usuario.getEmail(),usuario.getUsuario(),
+				usuario.getNombre(),usuario.getApellido(),usuario.getRol(),usuario.getEmail(),usuario.getUsuario(),
 				usuario.getPassword())).toList();
 	}
 

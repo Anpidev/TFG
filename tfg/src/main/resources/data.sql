@@ -1,5 +1,5 @@
 -- Insertar usuarios 
-INSERT INTO usuarios (dni, usuario, nombre, apellido, tipo, email, password) VALUES
+INSERT INTO usuarios (dni, usuario, nombre, apellido, rol, email, password) VALUES
 ('12345678A', 'ADMIN', 'Angela', 'Ruiz', 'ADMIN', 'admin@hospital.com', 'admin123'),
 ('23456789B', 'MEDICO1', 'Carlos', 'García', 'MEDICO', 'c.garcia@hospital.com', 'medico123'),
 ('45678901D', 'ENFERMERA1', 'Ana', 'Rodríguez', 'ENFERMERA', 'a.rodriguez@hospital.com', 'enfermera123'),

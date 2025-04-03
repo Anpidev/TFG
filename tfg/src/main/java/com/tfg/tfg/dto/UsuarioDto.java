@@ -1,6 +1,6 @@
 package com.tfg.tfg.dto;
 
-import com.tfg.tfg.models.Usuario.Tipo;
+import com.tfg.tfg.models.Usuario.Rol;
 
 public class UsuarioDto {
 
@@ -13,7 +13,7 @@ public class UsuarioDto {
 
 	private String apellido;
 
-	private Tipo tipo;
+	private Rol rol;
 
 	private String email;
 
@@ -25,14 +25,14 @@ public class UsuarioDto {
 		super();
 	}
 
-	public UsuarioDto(int id, String dni, String nombre, String apellido, Tipo tipo, String email, String usuario,
+	public UsuarioDto(int id, String dni, String nombre, String apellido, Rol rol, String email, String usuario,
 			String password) {
 		super();
 		this.id = id;
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.tipo = tipo;
+		this.rol = rol;
 		this.email = email;
 		this.usuario = usuario;
 		this.password = password;
@@ -70,12 +70,12 @@ public class UsuarioDto {
 		this.apellido = apellido;
 	}
 
-	public Tipo getTipo() {
-		return tipo;
+	public Rol getRol() {
+		return rol;
 	}
 
-	public void setTipo(Tipo tipo) {
-		this.tipo = tipo;
+	public void setRol(Rol rol) {
+		this.rol = rol;
 	}
 
 	public String getEmail() {

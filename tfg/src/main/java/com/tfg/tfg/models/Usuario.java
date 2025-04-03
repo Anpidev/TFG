@@ -24,8 +24,8 @@ public class Usuario {
 	private String apellido;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "tipo")
-	private Tipo tipo;
+	@Column(name = "rol")
+	private Rol rol;
 
 	private String email;
 
@@ -57,20 +57,20 @@ public class Usuario {
 		this.apellido = apellido;
 	}
 
-	public Usuario(String dni, String nombre, String apellido, Tipo tipo, String email, String usuario,
+	public Usuario(String dni, String nombre, String apellido, Rol rol, String email, String usuario,
 			String password) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.tipo = tipo;
+		this.rol = rol;
 		this.email = email;
 		this.usuario = usuario;
 		this.password = password;
 	}
 
 	// Enumerado para los tipos
-	public enum Tipo {
+	public enum Rol {
 		PACIENTE, ENFERMERA, MEDICO, ADMIN
 	}
 
@@ -106,12 +106,12 @@ public class Usuario {
 		this.apellido = apellido;
 	}
 
-	public Tipo getTipo() {
-		return tipo;
+	public Rol getRol() {
+		return rol;
 	}
 
-	public void setTipo(Tipo tipo) {
-		this.tipo = tipo;
+	public void setRol(Rol rol) {
+		this.rol = rol;
 	}
 
 	public String getEmail() {
