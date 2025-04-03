@@ -36,7 +36,7 @@ public class AnaliticaRestController {
 	public List<AnaliticaDto> buscarTodasLasAnaliticas() {
 		return analiticaService.findAllAnaliticas().stream().map(AnaliticaMapper::toDto).toList();
 	}
-
+	@CrossOrigin
 	@PostMapping
 	public AnaliticaDto salvarAnalitica(@RequestBody AnaliticaDto dto) {
 		Analitica analitica = AnaliticaMapper.toEntity(dto);
@@ -44,6 +44,7 @@ public class AnaliticaRestController {
 		return AnaliticaMapper.toDto(analiticaSalvada);
 
 	}
+	@CrossOrigin
 	@DeleteMapping("/{id}")
 	public void borrarAnalitica(@PathVariable int id){
 		analiticaService.deleteByIdAnalitica(id);
