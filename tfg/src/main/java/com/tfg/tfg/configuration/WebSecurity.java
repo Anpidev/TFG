@@ -7,12 +7,11 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.tfg.tfg.services.UserService;
 
 @Configuration
 @EnableWebSecurity
@@ -24,23 +23,13 @@ public class WebSecurity {
 		return new BCryptPasswordEncoder();
 	}
 	
-	@Bean 
-	public UserDetailsService userDetailsService() {
-		
-		//Crear en memoria una base de datos de usuarios con un usuario para la seguridad de la aplicacion
-		InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-				manager.createUser(User.withUsername("angela")
-					.password(passwordEncoder().encode("miclave"))
-					.roles("ADMIN")
-					.build());
-				return manager;
-				
-	}
+	
 	
 	//Parte de autentificar
+	@SuppressWarnings("removal")
 	@Bean
 	public AuthenticationManager authManager (HttpSecurity http, BCryptPasswordEncoder passwordEncoder,
-			UserDetailsService userDetailsService)throws Exception{
+			UserService userDetailsService)throws Exception{
 		
 		//Usa http para leerdatos, crypt paa encriptar y userdetail para obtener los usuarios
 		return http.getSharedObject(AuthenticationManagerBuilder.class).userDetailsService(userDetailsService)

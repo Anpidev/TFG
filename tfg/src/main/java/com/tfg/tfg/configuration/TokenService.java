@@ -15,6 +15,7 @@ public class TokenService {
 	
 	//metodo que crea el token
 	
+	@SuppressWarnings("deprecation")
 	public String crearToken(String usuario, String claveEncriptar, Date expiracion) {
 		SecretKey clave = Keys.hmacShaKeyFor(claveEncriptar.getBytes());
 		String JWT = Jwts.builder()
@@ -26,6 +27,7 @@ public class TokenService {
 		return JWT;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public String leerToken(String tokenReal, String claveEncriptar) {
 		SecretKey clave= Keys.hmacShaKeyFor(claveEncriptar.getBytes());
 		

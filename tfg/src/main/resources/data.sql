@@ -1,11 +1,11 @@
 -- Insertar usuarios 
 INSERT INTO usuarios (dni, usuario, nombre, apellido, rol, email, password) VALUES
-('12345678A', 'ADMIN', 'Angela', 'Ruiz', 'ADMIN', 'admin@hospital.com', 'admin123'),
-('23456789B', 'MEDICO1', 'Carlos', 'García', 'MEDICO', 'c.garcia@hospital.com', 'medico123'),
-('45678901D', 'ENFERMERA1', 'Ana', 'Rodríguez', 'ENFERMERA', 'a.rodriguez@hospital.com', 'enfermera123'),
-('67890123F', 'PACIENTE1', 'Juan', 'Pérez', 'PACIENTE', 'j.perez@gmail.com', 'paciente123'),
-('67890124F', 'PACIENTE2', 'Maria', 'Pérez', 'PACIENTE', 'm.perez@gmail.com', 'paciente123'),
-('67890125F', 'PACIENTE3', 'Ana', 'Pérez', 'PACIENTE', 'a.perez@gmail.com', 'paciente123');
+('12345678A', 'ADMIN', 'Angela', 'Ruiz', 'ADMIN', 'admin@hospital.com', '$2a$12$LWXqvwqrn38/FaU7berc4ueeKLCsSsz1VuAoR1JhlKkyqAgljERWK'),
+('23456789B', 'MEDICO1', 'Carlos', 'García', 'MEDICO', 'c.garcia@hospital.com', '$2a$12$gvuYqiqw9gxYmxpEGiNXwehikUoAXaIgECAsrgyuvV7Vg4GEheGIu'),
+('45678901D', 'ENFERMERA1', 'Ana', 'Rodríguez', 'ENFERMERA', 'a.rodriguez@hospital.com', '$2a$12$7sPOGDeBL5r9D8kolcm7PuS4/1PoJYCjTBMUluP9acQEXQYa0akkO'),
+('67890123F', 'PACIENTE1', 'Juan', 'Pérez', 'PACIENTE', 'j.perez@gmail.com', '$2a$12$nbBT3EuHV2idgBqO5y8CneOgGGY9x2oKTw4REt7m0gar27rmvi8hm'),
+('67890124F', 'PACIENTE2', 'Maria', 'Pérez', 'PACIENTE', 'm.perez@gmail.com', '$2a$12$nbBT3EuHV2idgBqO5y8CneOgGGY9x2oKTw4REt7m0gar27rmvi8hm'),
+('67890125F', 'PACIENTE3', 'Ana', 'Pérez', 'PACIENTE', 'a.perez@gmail.com', '$2a$12$nbBT3EuHV2idgBqO5y8CneOgGGY9x2oKTw4REt7m0gar27rmvi8hm');
 
 -- Insertar analíticas 
 INSERT INTO analiticas (paciente_id, medico_id, estado, observaciones) VALUES
