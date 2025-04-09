@@ -2,25 +2,39 @@
 DROP TABLE IF EXISTS analiticas_parametros; -- Nueva tabla para la relación muchos-a-muchos
 DROP TABLE IF EXISTS analiticas;
 DROP TABLE IF EXISTS usuarios;
+DROP TABLE IF EXISTS medicos;
+DROP TABLE IF EXISTS pacientes;
 
--- Eliminación de tablas en orden correcto
-DROP TABLE IF EXISTS analiticas_parametros;
-DROP TABLE IF EXISTS analiticas;
-DROP TABLE IF EXISTS usuarios;
-
--- Tabla usuarios (sin cambios)
-CREATE TABLE usuarios (
+-- Tabla medicos 
+CREATE TABLE medicos (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    dni VARCHAR(20) UNIQUE NOT NULL,
-    usuario VARCHAR(50) UNIQUE NOT NULL,
+    colegiado VARCHAR(20) UNIQUE NOT NULL,
     nombre VARCHAR(100) NOT NULL,
     apellido VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    telefono VARCHAR(20)
+);
+
+-- Tabla usuarios 
+CREATE TABLE usuarios (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    usuario VARCHAR(50) UNIQUE NOT NULL,
     rol VARCHAR(10) NOT NULL CHECK (rol IN ('PACIENTE', 'ENFERMERA', 'MEDICO', 'ADMIN')),
     email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL
 );
 
--- Tabla analiticas (sin cambios)
+-- Tabla pacientes 
+CREATE TABLE pacientes (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    dni VARCHAR(20) UNIQUE NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    telefono VARCHAR(20)
+);
+
+-- Tabla analiticas 
 CREATE TABLE analiticas (
     id INT PRIMARY KEY AUTO_INCREMENT,
     paciente_id INT NOT NULL,
@@ -28,8 +42,8 @@ CREATE TABLE analiticas (
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     estado VARCHAR(10) DEFAULT 'CREADA' CHECK (estado IN ('CREADA', 'EXTRAIDA', 'COMPLETADA', 'CANCELADA')),
     observaciones VARCHAR(1000),
-    FOREIGN KEY (paciente_id) REFERENCES usuarios(id) ON DELETE CASCADE,
-    FOREIGN KEY (medico_id) REFERENCES usuarios(id)
+    FOREIGN KEY (paciente_id) REFERENCES pacientes(id) ON DELETE CASCADE,
+    FOREIGN KEY (medico_id) REFERENCES medicos(id)
 );
 
 -- Nueva tabla para almacenar la relación entre analíticas y parámetros (enums)
@@ -39,4 +53,3 @@ CREATE TABLE analiticas_parametros (
     PRIMARY KEY (analitica_id, parametro),
     FOREIGN KEY (analitica_id) REFERENCES analiticas(id) ON DELETE CASCADE
 );
-

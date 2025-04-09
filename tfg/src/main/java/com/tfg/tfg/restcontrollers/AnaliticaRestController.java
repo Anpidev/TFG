@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tfg.tfg.dto.AnaliticaDto;
-import com.tfg.tfg.dto.UsuarioDto;
+import com.tfg.tfg.dto.MedicoDto;
+import com.tfg.tfg.dto.PacienteDto;
 import com.tfg.tfg.mappers.AnaliticaMapper;
 import com.tfg.tfg.models.Analitica;
 import com.tfg.tfg.services.AnaliticaService;
@@ -28,14 +29,16 @@ public class AnaliticaRestController {
 	public AnaliticaRestController(AnaliticaService analiticaService) {
 		super();
 		this.analiticaService = analiticaService;
-		
-		
-		//REST ANALITICA
+
+		// REST ANALITICA
 	}
-	@CrossOrigin	@GetMapping
+
+	@CrossOrigin
+	@GetMapping
 	public List<AnaliticaDto> buscarTodasLasAnaliticas() {
 		return analiticaService.findAllAnaliticas().stream().map(AnaliticaMapper::toDto).toList();
 	}
+
 	@CrossOrigin
 	@PostMapping
 	public AnaliticaDto salvarAnalitica(@RequestBody AnaliticaDto dto) {
@@ -44,36 +47,40 @@ public class AnaliticaRestController {
 		return AnaliticaMapper.toDto(analiticaSalvada);
 
 	}
+
 	@CrossOrigin
 	@DeleteMapping("/{id}")
-	public void borrarAnalitica(@PathVariable int id){
+	public void borrarAnalitica(@PathVariable int id) {
 		analiticaService.deleteByIdAnalitica(id);
 	}
 
-	
 	@PutMapping("/{id}")
 	public AnaliticaDto actualizarAnalitica(@RequestBody AnaliticaDto dto, @PathVariable int id) {
-		
+
 		Optional<Analitica> Optionalanalitica = analiticaService.findByIdAnalitica(id);
-		
-		Analitica analiticaSalvada =null;
+
+		Analitica analiticaSalvada = null;
 		if (Optionalanalitica.isPresent()) {
 			Analitica analitica = Optionalanalitica.get();
-			//SOLO SE PODRAN ACTUALIZAR ESTOS DATOS
-			analitica.setFechaCreacion(dto.getFechaCreacion());
+			// SOLO SE PODRAN ACTUALIZAR EL ESTADO POR ENFERMERA
 			analitica.setEstado(dto.getEstado());
-			analitica.setObservaciones(dto.getObservaciones());
-			analitica.setParametros(dto.getParametros());
 			analiticaSalvada = analiticaService.saveAnalitica(analitica);
-		
+
 		}
 		return AnaliticaMapper.toDto(analiticaSalvada);
 	}
-	
-//REST USUARIOS
-		
-	@CrossOrigin	@GetMapping("/usuarios")
-	public List<UsuarioDto> buscarTodosLosUsuarios() {
-		return analiticaService.findAllUsuarios();
+
+//REST PACIENTES Y MEDICOS
+
+	@CrossOrigin
+	@GetMapping("/pacientes")
+	public List<PacienteDto> buscarTodosLosPacientes() {
+		return analiticaService.findAllPacientes();
+	}
+
+	@CrossOrigin
+	@GetMapping("/medicos")
+	public List<MedicoDto> buscarTodosLosMedicos() {
+		return analiticaService.findAllMedicos();
 	}
 }

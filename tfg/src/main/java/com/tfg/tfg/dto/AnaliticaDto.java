@@ -15,6 +15,7 @@ public class AnaliticaDto {
     private int medicoId;
     private String medicoNombre;
     private String medicoApellido;
+    private String medicoColegiado;
     private LocalDate fechaCreacion;
     private EstadoAnalitica estado;
     private String observaciones;
@@ -30,7 +31,7 @@ public class AnaliticaDto {
 
 	//Contructor con todos los campos
     public AnaliticaDto(int id, int pacienteId, String pacienteNombre, String pacienteApellido, String pacienteDni,
-			int medicoId, String medicoNombre, String medicoApellido, LocalDate fechaCreacion, EstadoAnalitica estado,
+			int medicoId, String medicoNombre, String medicoApellido,String medicoColegiado, LocalDate fechaCreacion, EstadoAnalitica estado,
 			String observaciones, List<Parametros> parametros) {
 		super();
 		this.id = id;
@@ -41,6 +42,7 @@ public class AnaliticaDto {
 		this.medicoId = medicoId;
 		this.medicoNombre = medicoNombre;
 		this.medicoApellido = medicoApellido;
+		this.medicoColegiado=medicoColegiado;
 		this.fechaCreacion = fechaCreacion;
 		this.estado = estado;
 		this.observaciones = observaciones;
@@ -110,6 +112,18 @@ public class AnaliticaDto {
 
     
    
+
+
+	public String getMedicoColegiado() {
+		return medicoColegiado;
+	}
+
+
+
+	public void setMedicoColegiado(String medicoColegiado) {
+		this.medicoColegiado = medicoColegiado;
+	}
+
 
 
 	public void setEstado(EstadoAnalitica estado) {

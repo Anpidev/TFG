@@ -29,12 +29,12 @@ public class Analitica {
 	@ManyToOne
 	@JoinColumn(name = "paciente_id", nullable = false)
 	@JsonIgnore
-	private Usuario paciente;
+	private Paciente paciente;
 
 	@ManyToOne
 	@JoinColumn(name = "medico_id", nullable = false)
 	@JsonIgnore
-	private Usuario medico;
+	private Medico medico;
 
 	@Column(name = "fecha_creacion", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private LocalDate fechaCreacion;
@@ -67,7 +67,7 @@ public class Analitica {
 		this.id = id;
 	}
 
-	public Analitica(int id, Usuario paciente, Usuario medico, LocalDate fechaCreacion, EstadoAnalitica estado,
+	public Analitica(int id, Paciente paciente, Medico medico, LocalDate fechaCreacion, EstadoAnalitica estado,
 			String observaciones, List<Parametros> parametros) {
 		super();
 		this.id = id;
@@ -88,19 +88,19 @@ public class Analitica {
 		this.id = id;
 	}
 
-	public Usuario getPaciente() {
+	public Paciente getPaciente() {
 		return paciente;
 	}
 
-	public void setPaciente(Usuario paciente) {
+	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
 	}
 
-	public Usuario getMedico() {
+	public Medico getMedico() {
 		return medico;
 	}
 
-	public void setMedico(Usuario medico) {
+	public void setMedico(Medico medico) {
 		this.medico = medico;
 	}
 
