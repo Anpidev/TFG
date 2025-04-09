@@ -5,8 +5,6 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.tfg.tfg.dto.MedicoDto;
-import com.tfg.tfg.dto.PacienteDto;
 import com.tfg.tfg.models.Analitica;
 import com.tfg.tfg.models.Medico;
 import com.tfg.tfg.models.Paciente;
@@ -48,11 +46,12 @@ public class AnaliticaService {
 		analiticaRepository.deleteById(id);
 	}
 
+	
+
 	// Metodos de paciente
 
-	public List<PacienteDto> findAllPacientes() {
-		return pacienteRepository.findAll().stream().map(paciente -> new PacienteDto(paciente.getId(),
-				paciente.getDni(), paciente.getNombre(), paciente.getApellido(), paciente.getEmail())).toList();
+	public List<Paciente> findAllPacientes() {
+		return pacienteRepository.findAll();
 	}
 
 	public <S extends Paciente> S savePaciente(S paciente) {
@@ -69,9 +68,8 @@ public class AnaliticaService {
 
 	// Metodos de medico
 
-	public List<MedicoDto> findAllMedicos() {
-		return medicoRepository.findAll().stream().map(medico -> new MedicoDto(medico.getId(), medico.getColegiado(),
-				medico.getNombre(), medico.getApellido(), medico.getEmail())).toList();
+	public List<Medico> findAllMedicos() {
+		return medicoRepository.findAll();
 	}
 
 	public <S extends Medico> S saveMedico(S medico) {

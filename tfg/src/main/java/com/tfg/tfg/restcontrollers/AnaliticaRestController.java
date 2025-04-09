@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tfg.tfg.dto.AnaliticaDto;
-import com.tfg.tfg.dto.MedicoDto;
-import com.tfg.tfg.dto.PacienteDto;
 import com.tfg.tfg.mappers.AnaliticaMapper;
 import com.tfg.tfg.models.Analitica;
 import com.tfg.tfg.services.AnaliticaService;
@@ -30,7 +28,7 @@ public class AnaliticaRestController {
 		super();
 		this.analiticaService = analiticaService;
 
-		// REST ANALITICA
+		
 	}
 
 	@CrossOrigin
@@ -54,6 +52,7 @@ public class AnaliticaRestController {
 		analiticaService.deleteByIdAnalitica(id);
 	}
 
+	@CrossOrigin
 	@PutMapping("/{id}")
 	public AnaliticaDto actualizarAnalitica(@RequestBody AnaliticaDto dto, @PathVariable int id) {
 
@@ -70,17 +69,4 @@ public class AnaliticaRestController {
 		return AnaliticaMapper.toDto(analiticaSalvada);
 	}
 
-//REST PACIENTES Y MEDICOS
-
-	@CrossOrigin
-	@GetMapping("/pacientes")
-	public List<PacienteDto> buscarTodosLosPacientes() {
-		return analiticaService.findAllPacientes();
-	}
-
-	@CrossOrigin
-	@GetMapping("/medicos")
-	public List<MedicoDto> buscarTodosLosMedicos() {
-		return analiticaService.findAllMedicos();
-	}
 }

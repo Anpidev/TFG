@@ -11,19 +11,21 @@ public class PacienteDto {
 	private String apellido;
 
 	private String email;
+	
+	private String telefono;
 
 	public PacienteDto() {
 		super();
 	}
 
-	public PacienteDto(int id, String dni, String nombre, String apellido, String email) {
+	public PacienteDto(int id, String dni, String nombre, String apellido, String email,String telefono) {
 		super();
 		this.id = id;
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
-
 		this.email = email;
+		this.telefono=telefono;
 
 	}
 
@@ -67,4 +69,14 @@ public class PacienteDto {
 		this.email = email;
 	}
 
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	
+	
 }
