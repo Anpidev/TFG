@@ -36,7 +36,7 @@ public class Analitica {
 	@JsonIgnore
 	private Medico medico;
 
-	@Column(name = "fecha_creacion", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	@Column(name = "fecha_creacion")
 	private LocalDate fechaCreacion;
 
 	@Enumerated(EnumType.STRING)
