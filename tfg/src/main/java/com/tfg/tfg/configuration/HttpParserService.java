@@ -29,6 +29,7 @@ public class HttpParserService {
 				new Date(System.currentTimeMillis() + expiracion));
         //generar una cabecera autenticacion
 		response.addHeader(cabeceraHttp, prefijoToken + " " + JWT);
+		response.addHeader("Access-Control-Expose-Headers", cabeceraHttp);
 
 	}
 

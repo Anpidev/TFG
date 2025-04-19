@@ -17,6 +17,16 @@ public class UsuarioDto {
 	public UsuarioDto() {
 		super();
 	}
+	
+	
+
+	public UsuarioDto(String usuario, String password) {
+		super();
+		this.usuario = usuario;
+		this.password = password;
+	}
+
+
 
 	public UsuarioDto(int id, Rol rol, String email, String usuario, String password) {
 		super();

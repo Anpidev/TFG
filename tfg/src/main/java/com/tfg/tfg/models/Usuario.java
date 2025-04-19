@@ -9,7 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@SuppressWarnings("serial")
+
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
@@ -37,6 +37,13 @@ public class Usuario {
 	public Usuario(int id) {
 		super();
 		this.id = id;
+	}
+
+	
+	public Usuario(String usuario, String password) {
+		super();
+		this.usuario = usuario;
+		this.password = password;
 	}
 
 	public Usuario(Rol rol, String email, String usuario, String password) {
