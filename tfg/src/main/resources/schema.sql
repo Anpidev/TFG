@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS analiticas;
 DROP TABLE IF EXISTS usuarios;
 DROP TABLE IF EXISTS medicos;
 DROP TABLE IF EXISTS pacientes;
+DROP TABLE IF EXISTS rol;
 
 -- Tabla medicos 
 CREATE TABLE medicos (
@@ -15,13 +16,19 @@ CREATE TABLE medicos (
     telefono VARCHAR(20)
 );
 
--- Tabla usuarios 
+-- Tabla roles
+CREATE TABLE rol (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(20) NOT NULL UNIQUE CHECK (nombre IN ('ENFERMERA', 'MEDICO', 'ADMIN'))
+);
+
+-- Tabla usuarios (modificada para usar ID de rol)
 CREATE TABLE usuarios (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    usuario VARCHAR(50) UNIQUE NOT NULL,
-    rol VARCHAR(10) NOT NULL CHECK (rol IN ('PACIENTE', 'ENFERMERA', 'MEDICO', 'ADMIN')),
-    email VARCHAR(100) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL
+    nombre_usuario VARCHAR(50) UNIQUE NOT NULL,
+    rol_id INT NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    FOREIGN KEY (rol_id) REFERENCES rol(id)
 );
 
 -- Tabla pacientes 

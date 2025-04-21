@@ -29,7 +29,7 @@ public class MedicoRestController {
 		this.analiticaService = analiticaService;
 
 	}
-
+	
 	@CrossOrigin
 	@GetMapping
 	public List<MedicoDto> buscarTodosLsMedicoDtos() {
@@ -44,13 +44,13 @@ public class MedicoRestController {
 		return MedicoMapper.toDto(medicoSalvado);
 
 	}
-
+	
 	@CrossOrigin
 	@DeleteMapping("/{id}")
 	public void borrarMedico(@PathVariable int id) {
 		analiticaService.deleteByMedico(id);
 	}
-
+	
 	@CrossOrigin
 	@PutMapping("/{id}")
 	public MedicoDto actualizarMedico(@RequestBody MedicoDto dto, @PathVariable int id) {

@@ -29,13 +29,13 @@ public class PacienteRestController {
 		this.analiticaService = analiticaService;
 
 	}
-
+	
 	@CrossOrigin
 	@GetMapping
 	public List<PacienteDto> buscarTodasLosPacienteDtos() {
 		return analiticaService.findAllPacientes().stream().map(PacienteMapper::toDto).toList();
 	}
-
+	
 	@CrossOrigin
 	@PostMapping
 	public PacienteDto salvarPaciente(@RequestBody PacienteDto dto) {
@@ -44,13 +44,13 @@ public class PacienteRestController {
 		return PacienteMapper.toDto(pacienteSalvado);
 
 	}
-
+	
 	@CrossOrigin
 	@DeleteMapping("/{id}")
 	public void borrarPaciente(@PathVariable int id) {
 		analiticaService.deleteByIdPaciente(id);
 	}
-
+	
 	@CrossOrigin
 	@PutMapping("/{id}")
 	public PacienteDto actualizarPaciente(@RequestBody PacienteDto dto, @PathVariable int id) {

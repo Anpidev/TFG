@@ -1,11 +1,11 @@
--- Insertar usuarios 
-INSERT INTO usuarios (usuario, rol, email, password) VALUES
-('ADMIN', 'ADMIN', 'admin@hospital.com', 'admin123'),
-('MEDICO1', 'MEDICO', 'c.garcia@hospital.com', '$2a$12$gvuYqiqw9gxYmxpEGiNXwehikUoAXaIgECAsrgyuvV7Vg4GEheGIu'),
-('ENFERMERA1', 'ENFERMERA', 'a.rodriguez@hospital.com', '$2a$12$7sPOGDeBL5r9D8kolcm7PuS4/1PoJYCjTBMUluP9acQEXQYa0akkO'),
-('PACIENTE1', 'PACIENTE', 'j.perez@gmail.com', '$2a$12$nbBT3EuHV2idgBqO5y8CneOgGGY9x2oKTw4REt7m0gar27rmvi8hm'),
-('PACIENTE2', 'PACIENTE', 'm.perez@gmail.com', '$2a$12$nbBT3EuHV2idgBqO5y8CneOgGGY9x2oKTw4REt7m0gar27rmvi8hm'),
-('PACIENTE3', 'PACIENTE', 'a.perez@gmail.com', '$2a$12$nbBT3EuHV2idgBqO5y8CneOgGGY9x2oKTw4REt7m0gar27rmvi8hm');
+-- Insertar roles
+INSERT INTO rol (nombre) VALUES ('ENFERMERA'), ('MEDICO'), ('ADMIN');
+
+-- Insertar usuarios (con rol_id en lugar de nombre)
+INSERT INTO usuarios (nombre_usuario, rol_id, password) VALUES
+('angela', 3,  '$2a$12$gvuYqiqw9gxYmxpEGiNXwehikUoAXaIgECAsrgyuvV7Vg4GEheGIu'), -- admin123
+('medico1', 2, '$2a$12$gvuYqiqw9gxYmxpEGiNXwehikUoAXaIgECAsrgyuvV7Vg4GEheGIu'), -- medico123
+('enfermera1', 1, '$2a$12$7sPOGDeBL5r9D8kolcm7PuS4/1PoJYCjTBMUluP9acQEXQYa0akkO'); -- enfermera123
 
 -- Insertar pacientes 
 INSERT INTO pacientes (dni, nombre, apellido, email, telefono) VALUES

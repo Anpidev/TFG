@@ -2,12 +2,14 @@ package com.tfg.tfg.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 
 @Entity
@@ -16,87 +18,87 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "rol")
+	@NotBlank
+	@Column(unique = true, nullable = false)
+	private String nombreUsuario;
+	
+	@NotBlank
+	@Column( nullable = false)
+	private String password;
+	
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "rol_id", nullable = false)
 	private Rol rol;
 
-	private String email;
-
-	private String usuario;
-
-	private String password;
-
-	// Constructores, getters y setters...
-
+	
+	//CONSTRUCTORES
+	
 	public Usuario() {
 		super();
 	}
 
-	public Usuario(int id) {
+
+	public Usuario(Integer id, @NotBlank String nombreUsuario, @NotBlank String password, Rol rol) {
 		super();
 		this.id = id;
+		this.nombreUsuario = nombreUsuario;
+		this.password = password;
+		this.rol = rol;
 	}
+	
+	
 
 	
-	public Usuario(String usuario, String password) {
+	public Usuario(@NotBlank String nombreUsuario, @NotBlank String password, Rol rol) {
 		super();
-		this.usuario = usuario;
+		this.nombreUsuario = nombreUsuario;
 		this.password = password;
-	}
-
-	public Usuario(Rol rol, String email, String usuario, String password) {
-		super();
 		this.rol = rol;
-		this.email = email;
-		this.usuario = usuario;
-		this.password = password;
 	}
 
-	// Enumerado para los tipos
-	public enum Rol {
-		PACIENTE, ENFERMERA, MEDICO, ADMIN
-	}
 
-	public int getId() {
+	//GETTER Y SETTERS
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public Rol getRol() {
-		return rol;
+
+	public String getNombreUsuario() {
+		return nombreUsuario;
 	}
 
-	public void setRol(Rol rol) {
-		this.rol = rol;
+
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
 
 	public String getPassword() {
 		return password;
 	}
 
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+
+	public Rol getRol() {
+		return rol;
+	}
+
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
+
+	
 }
