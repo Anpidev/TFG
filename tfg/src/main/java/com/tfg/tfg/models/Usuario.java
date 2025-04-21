@@ -1,5 +1,6 @@
 package com.tfg.tfg.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -23,7 +24,8 @@ public class Usuario {
 	@NotBlank
 	@Column(unique = true, nullable = false)
 	private String nombreUsuario;
-	
+
+	@JsonIgnore
 	@NotBlank
 	@Column( nullable = false)
 	private String password;

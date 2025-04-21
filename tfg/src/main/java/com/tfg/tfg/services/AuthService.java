@@ -45,7 +45,7 @@ public class AuthService {
         String jwt=jwtUtil.crearToken(authResult);
         cookieService.addHttpOnlyCookie("jwt", jwt, 7*24*60*60, response);
         Usuario usuario= userService.findByNombreUsuario(username);
-        return usuario.getRol().toString();
+        return usuario.getRol().getNombre().toString();
     }
 
     public void registrarUsuario(NuevoUsuarioDto nuevoUsuarioDto) {
