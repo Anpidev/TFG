@@ -1,4 +1,4 @@
-package com.tfg.tfg.services;
+package com.tfg.services;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -7,11 +7,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.tfg.tfg.dto.NuevoUsuarioDto;
-import com.tfg.tfg.jwt.JwtUtil;
-import com.tfg.tfg.models.Rol;
-import com.tfg.tfg.models.Usuario;
-import com.tfg.tfg.repositories.RolRepository;
+import com.tfg.dto.NuevoUsuarioDto;
+import com.tfg.jwt.JwtUtil;
+import com.tfg.models.Rol;
+import com.tfg.models.Usuario;
+import com.tfg.repositories.RolRepository;
 
 import jakarta.servlet.http.HttpServletResponse;
 

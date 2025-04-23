@@ -1,7 +1,7 @@
-package com.tfg.tfg.mappers;
+package com.tfg.mappers;
 
-import com.tfg.tfg.dto.PacienteDto;
-import com.tfg.tfg.models.Paciente;
+import com.tfg.dto.PacienteDto;
+import com.tfg.models.Paciente;
 
 public class PacienteMapper {
 

@@ -1,4 +1,4 @@
-package com.tfg.tfg.restcontrollers;
+package com.tfg.restcontrollers;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tfg.tfg.dto.MedicoDto;
-import com.tfg.tfg.mappers.MedicoMapper;
-import com.tfg.tfg.models.Medico;
-import com.tfg.tfg.services.AnaliticaService;
+import com.tfg.dto.MedicoDto;
+import com.tfg.mappers.MedicoMapper;
+import com.tfg.models.Medico;
+import com.tfg.services.AnaliticaService;
 
 @RestController
 @RequestMapping("/webapi/medicos")

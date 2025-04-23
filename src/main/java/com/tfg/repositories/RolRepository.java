@@ -1,12 +1,12 @@
-package com.tfg.tfg.repositories;
+package com.tfg.repositories;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.tfg.tfg.models.Rol;
-import com.tfg.tfg.models.Roles;
+import com.tfg.models.Rol;
+import com.tfg.models.Roles;
 @Repository
 public interface RolRepository extends JpaRepository<Rol, Integer> {
 

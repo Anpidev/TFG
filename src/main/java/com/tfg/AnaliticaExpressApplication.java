@@ -1,4 +1,4 @@
-package com.tfg.tfg;
+package com.tfg;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

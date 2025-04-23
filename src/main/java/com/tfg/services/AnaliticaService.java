@@ -1,16 +1,16 @@
-package com.tfg.tfg.services;
+package com.tfg.services;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.tfg.tfg.models.Analitica;
-import com.tfg.tfg.models.Medico;
-import com.tfg.tfg.models.Paciente;
-import com.tfg.tfg.repositories.AnaliticaRepository;
-import com.tfg.tfg.repositories.MedicoRepository;
-import com.tfg.tfg.repositories.PacienteRepository;
+import com.tfg.models.Analitica;
+import com.tfg.models.Medico;
+import com.tfg.models.Paciente;
+import com.tfg.repositories.AnaliticaRepository;
+import com.tfg.repositories.MedicoRepository;
+import com.tfg.repositories.PacienteRepository;
 
 @Service
 public class AnaliticaService {

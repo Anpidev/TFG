@@ -1,4 +1,4 @@
-package com.tfg.tfg.models;
+package com.tfg.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

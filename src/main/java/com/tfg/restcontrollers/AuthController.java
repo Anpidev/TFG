@@ -1,4 +1,4 @@
-package com.tfg.tfg.restcontrollers;
+package com.tfg.restcontrollers;
 
 
 import org.springframework.http.HttpStatus;
@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tfg.tfg.dto.ApiMessage;
-import com.tfg.tfg.dto.LoginUserDto;
-import com.tfg.tfg.dto.NuevoUsuarioDto;
-import com.tfg.tfg.models.Usuario;
-import com.tfg.tfg.services.AuthService;
-import com.tfg.tfg.services.UsuarioService;
+import com.tfg.dto.ApiMessage;
+import com.tfg.dto.LoginUserDto;
+import com.tfg.dto.NuevoUsuarioDto;
+import com.tfg.models.Usuario;
+import com.tfg.services.AuthService;
+import com.tfg.services.UsuarioService;
 
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;

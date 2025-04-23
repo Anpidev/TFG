@@ -1,4 +1,4 @@
-package com.tfg.tfg.jwt;
+package com.tfg.jwt;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package com.tfg.tfg.dto;
+package com.tfg.dto;
 
 public class PacienteDto {
 

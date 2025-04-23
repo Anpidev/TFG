@@ -1,4 +1,4 @@
-package com.tfg.tfg.config;
+package com.tfg.config;
 
 import java.util.List;
 
@@ -16,8 +16,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.tfg.tfg.jwt.JwtAuthenticationFilter;
-import com.tfg.tfg.jwt.JwtEntryPoint;
+import com.tfg.jwt.JwtAuthenticationFilter;
+import com.tfg.jwt.JwtEntryPoint;
 
 @Configuration
 @EnableWebSecurity

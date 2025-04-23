@@ -1,4 +1,4 @@
-package com.tfg.tfg.jwt;
+package com.tfg.jwt;
 
 
 import java.io.IOException;
@@ -11,7 +11,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.WebUtils;
 
-import com.tfg.tfg.services.UsuarioService;
+import com.tfg.services.UsuarioService;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

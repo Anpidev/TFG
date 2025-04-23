@@ -1,4 +1,4 @@
-package com.tfg.tfg.models;
+package com.tfg.models;
 
 import java.time.LocalDate;
 import java.util.List;

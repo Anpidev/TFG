@@ -1,4 +1,4 @@
-package com.tfg.tfg.models;
+package com.tfg.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;

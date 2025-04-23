@@ -1,7 +1,7 @@
-package com.tfg.tfg.mappers;
+package com.tfg.mappers;
 
-import com.tfg.tfg.dto.MedicoDto;
-import com.tfg.tfg.models.Medico;
+import com.tfg.dto.MedicoDto;
+import com.tfg.models.Medico;
 
 public class MedicoMapper {
 

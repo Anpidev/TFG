@@ -1,4 +1,4 @@
-package com.tfg.tfg.models;
+package com.tfg.models;
 
 public enum Roles {
 	ENFERMERA, MEDICO, ADMIN

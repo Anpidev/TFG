@@ -1,4 +1,4 @@
-package com.tfg.tfg.config;
+package com.tfg.config;
 
 import java.util.Objects;
 
@@ -7,7 +7,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.tfg.tfg.dto.ApiMessage;
+import com.tfg.dto.ApiMessage;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {

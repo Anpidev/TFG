@@ -1,11 +1,11 @@
-package com.tfg.tfg.repositories;
+package com.tfg.repositories;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.tfg.tfg.models.Usuario;
+import com.tfg.models.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 	

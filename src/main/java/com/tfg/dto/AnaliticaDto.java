@@ -1,10 +1,10 @@
-package com.tfg.tfg.dto;
+package com.tfg.dto;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import com.tfg.tfg.models.Analitica.EstadoAnalitica;
-import com.tfg.tfg.models.Parametros;
+import com.tfg.models.Analitica.EstadoAnalitica;
+import com.tfg.models.Parametros;
 
 public class AnaliticaDto {
     private int id;

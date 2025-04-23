@@ -1,9 +1,9 @@
-package com.tfg.tfg.mappers;
+package com.tfg.mappers;
 
-import com.tfg.tfg.dto.AnaliticaDto;
-import com.tfg.tfg.models.Analitica;
-import com.tfg.tfg.models.Medico;
-import com.tfg.tfg.models.Paciente;
+import com.tfg.dto.AnaliticaDto;
+import com.tfg.models.Analitica;
+import com.tfg.models.Medico;
+import com.tfg.models.Paciente;
 
 public class AnaliticaMapper {
 

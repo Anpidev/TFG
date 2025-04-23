@@ -1,4 +1,4 @@
-package com.tfg.tfg.models;
+package com.tfg.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

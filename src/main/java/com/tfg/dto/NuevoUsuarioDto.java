@@ -1,6 +1,6 @@
-package com.tfg.tfg.dto;
+package com.tfg.dto;
 
-import com.tfg.tfg.models.Roles;
+import com.tfg.models.Roles;
 
 public class NuevoUsuarioDto {
 	

@@ -1,4 +1,4 @@
-package com.tfg.tfg.services;
+package com.tfg.services;
 
 import java.util.Collections;
 
@@ -9,8 +9,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.tfg.tfg.models.Usuario;
-import com.tfg.tfg.repositories.UsuarioRepository;
+import com.tfg.models.Usuario;
+import com.tfg.repositories.UsuarioRepository;
 
 @Service
 public class UsuarioService implements UserDetailsService {
