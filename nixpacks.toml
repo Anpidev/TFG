@@ -6,3 +6,5 @@ cmds = ["chmod +x mvnw", "./mvnw clean package -DskipTests"]
 
 [start]
 cmd = "java -jar target/*.jar"
+[phases.cleanup]
+cmds = ["rm -rf target"]

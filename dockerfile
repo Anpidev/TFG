@@ -26,3 +26,5 @@ EXPOSE 8080
 
 # Ejecuta el JAR
 ENTRYPOINT ["java", "-jar", "app.jar"]
+# En Dockerfile, después de compilar:
+RUN rm -rf target
