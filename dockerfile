@@ -1,26 +1,28 @@
-# Etapa 1: Construcción con Maven + Java
-FROM maven:3.9.3-eclipse-temurin-17 AS build
+# Usa una imagen con Java y Maven
+FROM maven:3.9.4-eclipse-temurin-17 AS build
 
-# Establecer JAVA_HOME en la etapa de construcción
-ENV JAVA_HOME=/usr/local/openjdk-17
-ENV PATH=$JAVA_HOME/bin:$PATH
-
+# Crea directorio de trabajo
 WORKDIR /app
-# Copiar el directorio tfg al contenedor
-COPY tfg /app/tfg
 
-# Construir el proyecto con Maven
-RUN cd tfg && mvn clean package -DskipTests
+# Copia todo el contenido al contenedor
+COPY . .
 
-# Etapa 2: Solo Java para ejecutar
+# Da permisos al script de Maven wrapper
+RUN chmod +x mvnw
+
+# Compila el proyecto
+RUN ./mvnw clean package -DskipTests
+
+# Imagen final con solo el JAR
 FROM eclipse-temurin:17-jdk
 
-# Establecer JAVA_HOME en la etapa de ejecución
-ENV JAVA_HOME=/usr/local/openjdk-17
-ENV PATH=$JAVA_HOME/bin:$PATH
-
 WORKDIR /app
-# Copiar el archivo JAR del contenedor de construcción
-COPY --from=build /app/tfg/target/*.jar app.jar
+
+# Copia el JAR desde la etapa anterior
+COPY --from=build /app/target/*.jar app.jar
+
+# Expone el puerto (ajústalo al de tu app)
 EXPOSE 8080
+
+# Ejecuta el JAR
 ENTRYPOINT ["java", "-jar", "app.jar"]

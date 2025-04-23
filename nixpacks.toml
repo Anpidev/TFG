@@ -1,18 +1,8 @@
-[build]
-builder = "NIXPACKS"
-
 [phases.setup]
-nixPkgs = ["openjdk17"]
-
-[phases.install]
-cmds = [
-    "cd tfg && chmod +x mvnw" # Dar permisos de ejecución al wrapper de Maven
-]
+nixPkgs = ["openjdk17", "maven"]
 
 [phases.build]
-cmds = [
-    "cd tfg && ./mvnw clean install -DskipTests" # Ejecutar Maven para construir el proyecto
-]
+cmds = ["chmod +x mvnw", "./mvnw clean package -DskipTests"]
 
 [start]
-cmd = "java -jar tfg/target/*.jar" # Ejecutar la aplicación Java
+cmd = "java -jar target/*.jar"
