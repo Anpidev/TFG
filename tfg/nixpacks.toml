@@ -1,0 +1,14 @@
+[build]
+builder = "NIXPACKS"
+
+[phases.setup]
+nixPkgs = ["openjdk17"]
+
+[phases.install]
+cmds = ["cd tfg && chmod +x mvnw"]
+
+[phases.build]
+cmds = ["cd tfg && ./mvnw package -DskipTests"]
+
+[start]
+cmd = "java -jar tfg/target/*.jar"
