@@ -6,14 +6,13 @@ nixPkgs = ["openjdk17"]
 
 [phases.install]
 cmds = [
-    "cd tfg && chmod +x mvnw",
-    "cd tfg && ./mvnw clean install -DskipTests"
+    "cd tfg && chmod +x mvnw"
 ]
 
 [phases.build]
 cmds = [
-    "cd tfg && ./mvnw package -DskipTests"
+    "cd tfg && ./mvnw clean install -DskipTests"
 ]
 
 [start]
-cmd = "java -jar /app/tfg/target/*.jar"
+cmd = "java -jar tfg/target/*.jar"
