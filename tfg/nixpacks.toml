@@ -6,13 +6,13 @@ nixPkgs = ["openjdk17"]
 
 [phases.install]
 cmds = [
-    "cd tfg && chmod +x mvnw"
+    "cd tfg && chmod +x mvnw" # Dar permisos de ejecución al wrapper de Maven
 ]
 
 [phases.build]
 cmds = [
-    "cd tfg && ./mvnw clean install -DskipTests"
+    "cd tfg && ./mvnw clean install -DskipTests" # Ejecutar Maven para construir el proyecto
 ]
 
 [start]
-cmd = "java -jar tfg/target/*.jar"
+cmd = "java -jar tfg/target/*.jar" # Ejecutar la aplicación Java
