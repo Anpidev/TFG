@@ -64,4 +64,8 @@ public class AuthService {
 
         userService.saveUsuario(usuario);
     }
+
+    public void  logout(HttpServletResponse response){
+        cookieService.deleteCookie("jwt", response);
+    }
 }

@@ -74,11 +74,19 @@ public class AuthController {
     public ResponseEntity<String> checkAuth(){
             return ResponseEntity.ok().body("Autenticado");
     }
+
     @CrossOrigin
     @GetMapping("/usuario/detalles")
     public ResponseEntity<Usuario> getAuthenticatedUser(){
          Usuario usuario = usuarioService.getDetallesUsuario();
          return ResponseEntity.ok(usuario);
          
+    }
+
+    @CrossOrigin
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(HttpServletResponse response){
+        authService.logout(response);
+        return ResponseEntity.ok(new ApiMessage("Sesioón finalizada"));
     }
 }
