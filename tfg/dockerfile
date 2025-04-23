@@ -1,0 +1,25 @@
+# Usa una imagen oficial con Java y Maven
+FROM maven:3.9.3-eclipse-temurin-17 AS build
+
+# Establece el directorio de trabajo dentro del contenedor
+WORKDIR /app
+
+# Copia el proyecto al contenedor
+COPY tfg /app
+
+# Construye el proyecto (sin tests para más rápido)
+RUN ./mvnw clean package -DskipTests
+
+# Segunda etapa: solo con Java para ejecutar
+FROM eclipse-temurin:17-jdk
+
+WORKDIR /app
+
+# Copia el .jar construido desde la etapa anterior
+COPY --from=build /app/target/*.jar app.jar
+
+# Expone el puerto por defecto de Spring Boot
+EXPOSE 8080
+
+# Comando para iniciar la app
+ENTRYPOINT ["java", "-jar", "app.jar"]
