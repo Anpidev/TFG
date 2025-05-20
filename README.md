@@ -85,12 +85,9 @@ Localizado en la carpeta actual.
     *   Usando Maven: `mvn spring-boot:run`
     *   O importando el proyecto en tu IDE (Eclipse, IntelliJ) y ejecutando la clase principal `com.tfg.tfg.AnaliticaExpressApplication.java`.
 3.  El backend estará disponible en `http://localhost:8080`.
-4.  La consola H2 estará disponible en `http://localhost:8080/h2-console` (JDBC URL: `jdbc:h2:mem:analiticaExpress`, User: `sa`, Password: `1234`).
+4.  La consola H2 estará disponible en `http://localhost:8080/h2-console`.
 
-**Credenciales de ejemplo (definidas en `data.sql`):**
-*   Admin: `angela` / `admin123`
-*   Médico: `medico1` / `medico123`
-*   Enfermera: `enfermera1` / `enfermera123`
+
 
 ## 5. Endpoints de la API
 
